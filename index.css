@@ -14,11 +14,12 @@
     margin-top:5px;
     width: 150px;
     height: 70px;
-    margin-right: 890px;
+    margin-right: 850px;
 }
 .nav-items > ul{
     display: flex;
     list-style: none;
+
 }
 .nav-items > ul >li {
     padding: 10px;
@@ -28,36 +29,58 @@
 
 .body{
     padding: 10px;
-    width: 95%;
+    width: 100%;
     display: flex; /* Use flexbox to center content vertically */
     min-height: 100vh; 
     flex-direction: column;
     margin-top: 100px;
+    align-items: center;
 }
 
 
 .foodimg{
-    height: 150px;
-    width: 250px;
     margin-left: 5px;
     padding-top: 10px;
-    border-radius: 3px;
-
+    border-radius: 20px;
+    border-style: none;
+    width: 90%;
+    height: 50%;
+}
+.foodimg:hover{
+    width: 99%;
+    height: 57%;
+    transition: 0.5s;
 }
 
 .cardContainer{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    overflow: hidden;
 }
 .items{
     display: flex;
-    justify-content:space-evenly;
+    justify-content:space-around;
+    margin-right:10px;
 }
 .name{
-    padding-left: 5px;
+    margin: 0px;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Basis Grotesque Pro";
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+    color: rgba(2, 6, 12, 0.75);
+    overflow: hidden;
+    width: 100%;
+    display: -webkit-box;
+    overflow-wrap: break-word;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+
 }
-.search{
+.rating{
     margin: 3px;
     display: inline;
     text-align: center;
@@ -66,18 +89,128 @@
 .btn{
     margin: 3px;
 }
-/* .restocard{
+.restocard{
     display: flex;
-} */
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;  
+
+}
 .det{
     display: flex;
     flex-direction: column;
+    text-overflow: ellipsis;   /* Display an ellipsis (...) for truncated text */
+
 }
 .each{
     margin: 10px;
     padding: 10px;
+    width: 15rem;
+    height: 25rem;
+    overflow:visible;
+}
+
+.text-ellipsis {
+    font-family: "Basis Grotesque Pro";
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 19px;
+    letter-spacing: -0.3px;
+    color: rgba(2, 6, 12, 0.6);
+    overflow: hidden;
+    width: 100%;
+    overflow-wrap: break-word;
+    display:-webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient:vertical;         
+}
+.rating{
+    color:green;
+}
+.login{
+    background-color:none;
+}
+.shimmer{
+    display: flex;
+    height: 300px;
+    width: 200px;
+    background-color: lightgray;
+    border-radius: 20px;
+    margin: 30px;
+}
+.shimmers{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+.filters{
+    display: flex;
+}
+
+.restInfo{
+    margin-top: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 17rem;
+    align-items: center;
+}
+
+.restHead{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 65%;
+    width: 55%;
+    /* background-color: #8b8d97; */
+}
+
+.ratingBox{
+    border: 0.5px solid lightgray;
+    padding: 3px;
+    border-radius: 3px;
+    height: 90px;
+}
+
+#design{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 
 }
-.topRated{
+
+.avgrating{
+    font-size: 11px;
+    color: #8b8d97;
+    font-family: ProximaNovaCondensedRegular,arial,Helvetica Neue,sans-serif;
+    font-weight: 600;
+}
+#line{
+    border-bottom: 0.5px solid #d3d3d3;
+    height: 0.5px;
+    margin-top: 10px;
+    /* width: calc(100% - 32px); */
+    width:55%;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+    height: 15rem;
+    margin-top: 10px;
+    width: 55%;
 
 }
+#name{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    /* background-color: antiquewhite; */
+    margin: 5px;
+ }
+ .dropdown{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+ }

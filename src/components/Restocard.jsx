@@ -1,20 +1,26 @@
-export default Restocard = ({resList}) => {
+export default RestoCard = ({name,averageRating,cuisine,priceForTwo,image,deliveryTime}) => {
+
+
     return (
         <div className="cardContainer">
-            {resList.map((resto)=>
-            <div className="each">  {key = resto.index}
-                <img className="foodimg" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/si5pju2lzemfm5wm7dvs" alt="foodimg" />
+            
+            <div className="each">  
+                <img className="foodimg" src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${image}`} alt="foodimg" />
+
                 <div className="det">
                 <div className="name">
-                <h4>{resto.name}</h4>
+                <h4>{name}</h4>
+                <div className="text-ellipsis">
+                <h4 >{cuisine}</h4>
+                </div>
                 </div>
                 <div className="items">
-                <h4>{resto.ratings}</h4>
-                <h4> 36mins</h4>
-                <h4> {resto.priceForTwo} for two</h4>
+                <h4 className="rating">{averageRating}</h4>
+                <h4> {deliveryTime} mins</h4>
+                <h4> {priceForTwo}</h4>
                 </div>
                 </div>
-                </div>)}
+                </div>
             </div>
     )
 }
