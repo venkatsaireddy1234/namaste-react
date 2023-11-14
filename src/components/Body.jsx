@@ -4,6 +4,7 @@ import Shimmmering from "./Shimmering";
 import { HiXMark, IconName } from "react-icons/hi2";
 import { REST_LIST_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 export default Body = () => {
   const [resList, setResList] = useState([]);
@@ -13,7 +14,8 @@ export default Body = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
+  
+  const onlineStatus = useOnlineStatus();
   const fetchData = async () => {
     try {
       const data = await fetch(REST_LIST_URL);
@@ -45,10 +47,15 @@ export default Body = () => {
     );
     setFilters(filtRes);
   };
-  return resList?.length === 0 ? (
-    <Shimmmering />
-  ) : (
-    <div className="body">
+
+  if (onlineStatus === false)
+    return (<h1>Please check Your Internet Connection</h1>);
+  else{
+
+    return resList?.length === 0 ? (
+      <Shimmmering />
+      ) : (
+        <div className="body">
       <div className="filters">
         <div className="rating">
           <button className="topRated" onClick={() => filterRating()}>
@@ -76,9 +83,9 @@ export default Body = () => {
       <div className="restocard">
         {filteredRest.map((restaurant) => (
           <Link
-            style={{ textDecoration: "none" }}
-            key={restaurant.info.id}
-            to={`/restaurant/${restaurant.info.id}`}
+          style={{ textDecoration: "none" }}
+          key={restaurant.info.id}
+          to={`/restaurant/${restaurant.info.id}`}
           >
             <Restocard
               name={restaurant.info.name}
@@ -94,3 +101,4 @@ export default Body = () => {
     </div>
   );
 };
+}
