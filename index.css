@@ -1,216 +1,265 @@
-.header{
-    display: flex;
-    justify-content:space-evenly;
-    border: 7px;
-    position:fixed; 
-    top:0px;
-    width: 100%;
-    background-color:white;
-    z-index: 100;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  border: 7px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  background-color: white;
+  z-index: 100;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
-.foodlogo{
-    margin-top:5px;
-    width: 150px;
-    height: 70px;
-    margin-right: 850px;
+.foodlogo {
+  margin-top: 5px;
+  width: 150px;
+  height: 70px;
+  margin-right: 850px;
 }
-.nav-items > ul{
-    display: flex;
-    list-style: none;
-
+.nav-items > ul {
+  display: flex;
+  list-style: none;
 }
-.nav-items > ul >li {
-    padding: 10px;
-    align-items: flex-start;
-    justify-items: flex-start;
+.nav-items > ul > li {
+  padding: 10px;
+  align-items: flex-start;
+  justify-items: flex-start;
 }
 
-.body{
-    padding: 10px;
-    width: 100%;
-    display: flex; /* Use flexbox to center content vertically */
-    min-height: 100vh; 
-    flex-direction: column;
-    margin-top: 100px;
-    align-items: center;
+.body {
+  padding: 10px;
+  width: 100%;
+  display: flex; /* Use flexbox to center content vertically */
+  min-height: 100vh;
+  flex-direction: column;
+  margin-top: 100px;
+  align-items: center;
 }
 
-
-.foodimg{
-    margin-left: 5px;
-    padding-top: 10px;
-    border-radius: 20px;
-    border-style: none;
-    width: 90%;
-    height: 50%;
+.foodimg {
+  margin-left: 5px;
+  padding-top: 10px;
+  border-radius: 20px;
+  border-style: none;
+  width: 90%;
+  height: 50%;
 }
-.foodimg:hover{
-    width: 99%;
-    height: 57%;
-    transition: 0.5s;
-}
-
-.cardContainer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    overflow: hidden;
-}
-.items{
-    display: flex;
-    justify-content:space-around;
-    margin-right:10px;
-}
-.name{
-    margin: 0px;
-    -webkit-font-smoothing: antialiased;
-    font-family: "Basis Grotesque Pro";
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: -0.3px;
-    color: rgba(2, 6, 12, 0.75);
-    overflow: hidden;
-    width: 100%;
-    display: -webkit-box;
-    overflow-wrap: break-word;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-
-}
-.rating{
-    margin: 3px;
-    display: inline;
-    text-align: center;
+.foodimg:hover {
+  width: 99%;
+  height: 57%;
+  transition: 0.5s;
 }
 
-.btn{
-    margin: 3px;
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow: hidden;
 }
-.restocard{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    overflow: hidden;  
+.items {
+  display: flex;
+  justify-content: space-around;
+  margin-right: 10px;
+}
+.name {
+  margin: 0px;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Basis Grotesque Pro";
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.3px;
+  color: rgba(2, 6, 12, 0.75);
+  overflow: hidden;
+  width: 100%;
+  display: -webkit-box;
+  overflow-wrap: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.rating {
+  margin: 3px;
+  display: inline;
+  text-align: center;
+}
 
+.btn {
+  margin: 3px;
 }
-.det{
-    display: flex;
-    flex-direction: column;
-    text-overflow: ellipsis;   /* Display an ellipsis (...) for truncated text */
-
+.restocard {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow: hidden;
 }
-.each{
-    margin: 10px;
-    padding: 10px;
-    width: 15rem;
-    height: 25rem;
-    overflow:visible;
+.det {
+  display: flex;
+  flex-direction: column;
+  text-overflow: ellipsis; /* Display an ellipsis (...) for truncated text */
+}
+.each {
+  margin: 10px;
+  padding: 10px;
+  width: 15rem;
+  height: 25rem;
+  overflow: visible;
 }
 
 .text-ellipsis {
-    font-family: "Basis Grotesque Pro";
-    font-size: 16px;
-    font-weight: 200;
-    line-height: 19px;
-    letter-spacing: -0.3px;
-    color: rgba(2, 6, 12, 0.6);
-    overflow: hidden;
-    width: 100%;
-    overflow-wrap: break-word;
-    display:-webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient:vertical;         
+  font-family: "Basis Grotesque Pro";
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 19px;
+  letter-spacing: -0.3px;
+  color: rgba(2, 6, 12, 0.6);
+  overflow: hidden;
+  width: 100%;
+  overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
-.rating{
-    color:green;
+.rating {
+  color: green;
 }
-.login{
-    background-color:none;
+.login {
+  background-color: none;
 }
-.shimmer{
-    display: flex;
-    height: 300px;
-    width: 200px;
-    background-color: lightgray;
-    border-radius: 20px;
-    margin: 30px;
+.shimmer {
+  display: flex;
+  height: 300px;
+  width: 200px;
+  background-color: lightgray;
+  border-radius: 20px;
+  margin: 30px;
 }
-.shimmers{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-top: 100px;
+.shimmers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 100px;
 }
-.filters{
-    display: flex;
-}
-
-.restInfo{
-    margin-top: 130px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 17rem;
-    align-items: center;
+.filters {
+  display: flex;
 }
 
-.restHead{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 65%;
-    width: 55%;
-    /* background-color: #8b8d97; */
+.restInfo {
+  margin-top: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 17rem;
+  align-items: center;
 }
 
-.ratingBox{
-    border: 0.5px solid lightgray;
-    padding: 3px;
-    border-radius: 3px;
-    height: 90px;
+.restHead {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 65%;
+  width: 55%;
+  /* background-color: #8b8d97; */
 }
 
-#design{
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-
+.ratingBox {
+  border: 0.5px solid lightgray;
+  padding: 3px;
+  border-radius: 3px;
+  height: 90px;
 }
 
-.avgrating{
-    font-size: 11px;
-    color: #8b8d97;
-    font-family: ProximaNovaCondensedRegular,arial,Helvetica Neue,sans-serif;
-    font-weight: 600;
+#design {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
-#line{
-    border-bottom: 0.5px solid #d3d3d3;
-    height: 0.5px;
-    margin-top: 10px;
-    /* width: calc(100% - 32px); */
-    width:55%;
-}
-.menu{
-    display: flex;
-    flex-direction: column;
-    height: 15rem;
-    margin-top: 10px;
-    width: 55%;
 
+.avgrating {
+  font-size: 11px;
+  color: #8b8d97;
+  font-family: ProximaNovaCondensedRegular, arial, Helvetica Neue, sans-serif;
+  font-weight: 600;
 }
-#name{
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    /* background-color: antiquewhite; */
-    margin: 5px;
- }
- .dropdown{
-    display:flex;
-    justify-content: center;
-    align-items: center;
- }
+#line {
+  border-bottom: 0.5px solid #d3d3d3;
+  height: 0.5px;
+  margin-top: 10px;
+  /* width: calc(100% - 32px); */
+  width: 55%;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  height: 15rem;
+  margin-top: 10px;
+  width: 55%;
+}
+#name {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  /* background-color: antiquewhite; */
+  margin: 5px;
+}
+.dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menuItems {
+  margin: 10px;
+  display: flex;
+  width: auto;
+  justify-content: space-between;
+  /* height: fit-content; */
+  background-color: #fff; 
+  padding: 10px; 
+  border-radius: 8px; /* Add border-radius for rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for a subtle lift */
+}
+
+.dropDownArrow {
+  border: none;
+  cursor: pointer; /* Add cursor pointer for better UX */
+}
+
+#menuLine {
+  border-bottom: 0.5px solid #d3d3d3;
+  height: 0.5px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.desc {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.foodImg {
+  height: 100%;
+  margin-right: 10px; /* Add margin for spacing between image and text */
+  width: 130px; /* Set a fixed width for the image */
+  object-fit: cover; /* Ensure the image covers the container */
+  border-radius: 8px; /* Add border-radius for rounded corners */
+}
+
+.textDesc {
+  font-family: "Basis Grotesque Pro";
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 19px;
+  letter-spacing: -0.3px;
+  color: rgba(2, 6, 12, 0.6);
+  width: 100%;
+  overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Show up to 2 lines of text */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}

@@ -5,27 +5,31 @@ import { HiXMark, IconName } from "react-icons/hi2";
 import { REST_LIST_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 
-
 export default Body = () => {
   const [resList, setResList] = useState([]);
   const [inputValue, setValue] = useState("");
   const [filteredRest, setFilters] = useState([]);
+
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(REST_LIST_URL
-    );
-    const response = await data.json();
-    setResList(
-      response.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-    setFilters(
-      response.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
+    try {
+      const data = await fetch(REST_LIST_URL);
+      const response = await data.json();
+      setResList(
+        response.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+      setFilters(
+        response.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      throw error;
+    }
   };
 
   const filterRating = () => {
@@ -49,7 +53,7 @@ export default Body = () => {
         <div className="rating">
           <button className="topRated" onClick={() => filterRating()}>
             Rating 4.0+
-          <HiXMark />     
+            <HiXMark />
           </button>
         </div>
         <div className="search">
@@ -71,18 +75,22 @@ export default Body = () => {
       </div>
       <div className="restocard">
         {filteredRest.map((restaurant) => (
-          <Link style={{textDecoration:"none"}}key={restaurant.info.id} to={`/restaurant/${restaurant.info.id}`} >
-          
+          <Link
+            style={{ textDecoration: "none" }}
+            key={restaurant.info.id}
+            to={`/restaurant/${restaurant.info.id}`}
+          >
             <Restocard
-            name={restaurant.info.name}
-            averageRating={restaurant.info.avgRatingString}
-            cuisine={restaurant.info.cuisines}
-            priceForTwo={restaurant.info.costForTwo}
-            deliveryTime={restaurant.info.sla.deliveryTime}
-            image={restaurant.info.cloudinaryImageId}
-          /></Link>
+              name={restaurant.info.name}
+              averageRating={restaurant.info.avgRatingString}
+              cuisine={restaurant.info.cuisines}
+              priceForTwo={restaurant.info.costForTwo}
+              deliveryTime={restaurant.info.sla.deliveryTime}
+              image={restaurant.info.cloudinaryImageId}
+            />
+          </Link>
         ))}
       </div>
     </div>
   );
-}; 
+};
