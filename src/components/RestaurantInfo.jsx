@@ -1,25 +1,16 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Shimmmering from "./Shimmering";
 import { HiChevronDown, HiStar } from "react-icons/hi2";
 import MenuItems from "./MenuItems";
+import useRestInfo from "../utils/useRestInfo";
+import { useState } from "react";
 
 const RestaurantInfo = () => {
-  const [restInfo, setRestInfo] = useState(null);
   const { restId } = useParams();
   // const [downBarStatus,setDownBarStatus] = useState(false);
   const [openCategory, setOpenCategory] = useState(null);
-  useEffect(() => {
-    fetchRestInfo();
-  }, []);
-
-  const fetchRestInfo = async () => {
-    const REST_INFO_URL = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=${restId}`;
-
-    const data = await fetch(REST_INFO_URL);
-    const json = await data.json();
-    setRestInfo(json.data);
-  };
+  
+  const restInfo = useRestInfo(restId);
   if (restInfo === null) return <Shimmmering />;
   const {
     name,
@@ -61,7 +52,7 @@ const RestaurantInfo = () => {
           if (menu.card.card.title != undefined) {
             return (
               <div className="dropdown">
-                <div key={menu} className="name" id="name">
+                <div key={menu.card.card.id} className="name" id="name">
                   {menu.card.card.title}(
                   {menu.card.card.itemCards?.length
                     ? menu.card.card.itemCards?.length
