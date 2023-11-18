@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { LOGO_URL } from "../utils/constants"
+import { LOGO_URL,LOGO_URL1 } from "../utils/constants"
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 export default Header = () => {
@@ -9,18 +9,18 @@ const changeBtn = () => {
 }   
 const onlineStatus = useOnlineStatus();
     return (
-        <div className="header">
-            <div className="logo">
-            <img className= "foodlogo" src={LOGO_URL} alt="applogo" />
+        <div className="flex justify-between bg-pink-50  w-full mb-10 fixed top-0 left-0 right-0 z-50">
+            <div className="w-[120px] h-[100px] m-4 mt-1 p-2 ">
+            <img className= "foodlogo" src={LOGO_URL1} alt="applogo" />
             </div>
-            <div className="nav-items">
-                <ul >
-                    <li>{onlineStatus? "online": "offline"}</li>
-                    <li><Link style={{textDecoration:"none", color:"black"}}to = "/">Home</Link></li>
-                    <li><Link style={{textDecoration:"none", color:"black"}}to = "/about">About Us</Link></li>
-                    <li><Link style={{textDecoration:"none", color:"black"}}to = "/contact">Contact Us</Link></li>
-                    <li><Link style={{textDecoration:"none", color:"black"}}>Cart </Link></li>
-                    <li><Link style={{textDecoration:"none", color:"black"}}to = '/groceries'>Groceries </Link></li>
+            <div className="flex">
+                <ul className="flex flex-row justify-items-center m-2 p-2 content-center items-center">
+                    <li className="p-2">{onlineStatus? "online": "offline"}</li>
+                    <li className="p-2"><Link style={{textDecoration:"none", color:"black"}}to = "/">Home</Link></li>
+                    <li className="p-2"><Link style={{textDecoration:"none", color:"black"}}to = "/about">About Us</Link></li>
+                    <li className="p-2"><Link style={{textDecoration:"none", color:"black"}}to = "/contact">Contact Us</Link></li>
+                    <li className="p-2"><Link style={{textDecoration:"none", color:"black"}}>Cart </Link></li>
+                    <li className="p-2"><Link style={{textDecoration:"none", color:"black"}}to = '/groceries'>Groceries </Link></li>
                     <button className="login" onClick={()=>changeBtn()}>{btnName}</button>
                 </ul>
             </div>

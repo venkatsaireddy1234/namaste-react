@@ -1,4 +1,4 @@
-.header {
+/* .header {
   display: flex;
   justify-content: space-evenly;
   border: 7px;
@@ -28,7 +28,7 @@
 .body {
   padding: 10px;
   width: 100%;
-  display: flex; /* Use flexbox to center content vertically */
+  display: flex; 
   min-height: 100vh;
   flex-direction: column;
   margin-top: 100px;
@@ -94,7 +94,7 @@
 .det {
   display: flex;
   flex-direction: column;
-  text-overflow: ellipsis; /* Display an ellipsis (...) for truncated text */
+  text-overflow: ellipsis; 
 }
 .each {
   margin: 10px;
@@ -157,7 +157,7 @@
   justify-content: space-between;
   height: 65%;
   width: 55%;
-  /* background-color: #8b8d97; */
+  
 }
 
 .ratingBox {
@@ -184,7 +184,7 @@
   border-bottom: 0.5px solid #d3d3d3;
   height: 0.5px;
   margin-top: 10px;
-  /* width: calc(100% - 32px); */
+  
   width: 55%;
 }
 .menu {
@@ -198,7 +198,7 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
-  /* background-color: antiquewhite; */
+  
   margin: 5px;
 }
 .dropdown {
@@ -212,16 +212,14 @@
   display: flex;
   width: auto;
   justify-content: space-between;
-  /* height: fit-content; */
   background-color: #fff; 
   padding: 10px; 
-  border-radius: 8px; /* Add border-radius for rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for a subtle lift */
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
-
 .dropDownArrow {
   border: none;
-  cursor: pointer; /* Add cursor pointer for better UX */
+  cursor: pointer; 
 }
 
 #menuLine {
@@ -241,10 +239,10 @@
 
 .foodImg {
   height: 100%;
-  margin-right: 10px; /* Add margin for spacing between image and text */
-  width: 130px; /* Set a fixed width for the image */
-  object-fit: cover; /* Ensure the image covers the container */
-  border-radius: 8px; /* Add border-radius for rounded corners */
+  margin-right: 10px; 
+  width: 130px; 
+  object-fit: cover; 
+  border-radius: 8px; 
 }
 
 .textDesc {
@@ -257,9 +255,13 @@
   width: 100%;
   overflow-wrap: break-word;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Show up to 2 lines of text */
+  -webkit-line-clamp: 2; 
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal;
-}
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

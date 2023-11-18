@@ -9,7 +9,7 @@ const RestaurantInfo = () => {
   const { restId } = useParams();
   // const [downBarStatus,setDownBarStatus] = useState(false);
   const [openCategory, setOpenCategory] = useState(null);
-  
+
   const restInfo = useRestInfo(restId);
   if (restInfo === null) return <Shimmmering />;
   const {
@@ -27,51 +27,47 @@ const RestaurantInfo = () => {
     setOpenCategory(title === openCategory ? null : title);
   };
   return (
-    <div className="restInfo ">
-      <div className="restHead">
-        <div>
-          <h2 className="name">{name}</h2>
-          <p className="text-ellipsis">{cuisines.join(" ,")}</p>
-        </div>
-        <div className="ratingBox">
-          <div className="rating" id="design">
-            <span>
-              {" "}
+    <div className="flex mt-32 flex-col items-center">
+      <div className="flex flex-col">
+        <div className="name text-2xl font-bold">{name}</div>
+        <p className="text-ellipsis">{cuisines.join(" ,")}</p>
+        <div className="flex items-center">
+          <div className="ratingBox flex items-center">
+            <span className="text-yellow-500">
               <HiStar />
             </span>
-            <span>
-              <h3 className="avgrating">{avgRatingString}</h3>
-            </span>
+            <h3 className="avgrating">{avgRatingString}</h3>
           </div>
           <h4 className="text-ellipsis">{totalRatingsString}</h4>
         </div>
       </div>
-      <div id="line"></div>
-      <div className="menu">
-        {objectsExceptFirst.map((menu) => {
+      <div className="">
+        {objectsExceptFirst.map((menu, index) => {
           if (menu.card.card.title != undefined) {
             return (
-              <div className="dropdown">
-                <div key={menu.card.card.id} className="name" id="name">
-                  {menu.card.card.title}(
-                  {menu.card.card.itemCards?.length
-                    ? menu.card.card.itemCards?.length
-                    : null}
-                  )
+              <div key={index} className="w-[800px] ">
+                <div className="flex justify-between p-4 ">
+                  <p className="text-lg font-semibold">
+                    {menu.card.card.title} (
+                    {menu.card.card.itemCards?.length
+                      ? menu.card.card.itemCards?.length
+                      : 0}
+                    )
+                  </p>
                   <button
-                    className="dropDownArrow"
+                    className=" ml-2"
                     onClick={() => {
                       handleMenuCard(menu.card.card.title);
                     }}
                   >
-                    <HiChevronDown />{" "}
+                    <HiChevronDown />
                   </button>
-                  {openCategory === menu.card.card.title && (
-                    <div>
-                      <MenuItems items={menu.card.card.itemCards} />
-                    </div>
-                  )}
                 </div>
+                {openCategory === menu.card.card.title && (
+                  <div className="p-6">
+                    <MenuItems items={menu.card.card.itemCards} />
+                  </div>
+                )}
               </div>
             );
           }

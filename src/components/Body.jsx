@@ -1,4 +1,4 @@
-import Restocard from "./RestoCard";
+import Restocard, { withPromotedLabel } from "./RestoCard";
 import { useEffect, useState } from "react";
 import Shimmmering from "./Shimmering";
 import { HiXMark, IconName } from "react-icons/hi2";
@@ -11,10 +11,12 @@ export default Body = () => {
   const [inputValue, setValue] = useState("");
   const [filteredRest, setFilters] = useState([]);
 
+  console.log(resList);
+  const RestuarantCardWithLable = withPromotedLabel(Restocard);
   useEffect(() => {
     fetchData();
   }, []);
-  
+
   const onlineStatus = useOnlineStatus();
   const fetchData = async () => {
     try {
@@ -49,56 +51,73 @@ export default Body = () => {
   };
 
   if (onlineStatus === false)
-    return (<h1>Please check Your Internet Connection</h1>);
-  else{
-
+    return <h1>Please check Your Internet Connection</h1>;
+  else {
     return resList?.length === 0 ? (
       <Shimmmering />
-      ) : (
-        <div className="body">
-      <div className="filters">
-        <div className="rating">
-          <button className="topRated" onClick={() => filterRating()}>
-            Rating 4.0+
-            <HiXMark />
-          </button>
-        </div>
-        <div className="search">
-          <input
-            type="text"
-            value={inputValue}
-            onChange={(e) => {
-              setValue(e.target.value);
-            }}
-          />
-          <button
-            onClick={() => {
-              applySearch();
-            }}
-          >
-            Search
-          </button>
-        </div>
-      </div>
-      <div className="restocard">
-        {filteredRest.map((restaurant) => (
-          <Link
-          style={{ textDecoration: "none" }}
-          key={restaurant.info.id}
-          to={`/restaurant/${restaurant.info.id}`}
-          >
-            <Restocard
-              name={restaurant.info.name}
-              averageRating={restaurant.info.avgRatingString}
-              cuisine={restaurant.info.cuisines}
-              priceForTwo={restaurant.info.costForTwo}
-              deliveryTime={restaurant.info.sla.deliveryTime}
-              image={restaurant.info.cloudinaryImageId}
+    ) : (
+      <div className="mt-[150px]">
+        <div className="flex items-center justify-center ">
+          <div className="flex flex-row">
+            <button
+              className="px-4 py-2 text-gray-500 rounded hover:text-orange-400 rounded focus:outline-none"
+              onClick={() => filterRating()}
+            >
+              Rating 4.0+
+              <HiXMark className="ml-2" />
+            </button>
+          </div>
+
+          <div className="flex justify-between m-2">
+            <input
+              className="p-2 border border-gray-300 rounded focus:outline-none"
+              type="text"
+              value={inputValue}
+              onChange={(e) => {
+                setValue(e.target.value);
+              }}
             />
-          </Link>
-        ))}
+            <button
+              className="ml-2 px-4 py-2  text-gray-500 rounded hover:text-orange-400"
+              onClick={() => {
+                applySearch();
+              }}
+            >
+              Search
+            </button>
+          </div>
+        </div>
+        <div className=" m-2 flex flex-wrap gap-2  justify-center w-full">
+          {filteredRest?.map((restaurant) => (
+            <Link
+              style={{ textDecoration: "none" }}
+              key={restaurant.info.id}
+              to={`/restaurant/${restaurant.info.id}`}
+              className=" gap-2"
+            >
+              {restaurant.info.isOpen ? (
+                <RestuarantCardWithLable
+                  name={restaurant.info.name}
+                  averageRating={restaurant.info.avgRatingString}
+                  cuisine={restaurant.info.cuisines}
+                  priceForTwo={restaurant.info.costForTwo}
+                  deliveryTime={restaurant.info.sla.deliveryTime}
+                  image={restaurant.info.cloudinaryImageId}
+                />
+              ) : (
+                <Restocard
+                  name={restaurant.info.name}
+                  averageRating={restaurant.info.avgRatingString}
+                  cuisine={restaurant.info.cuisines}
+                  priceForTwo={restaurant.info.costForTwo}
+                  deliveryTime={restaurant.info.sla.deliveryTime}
+                  image={restaurant.info.cloudinaryImageId}
+                />
+              )}
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
-}
