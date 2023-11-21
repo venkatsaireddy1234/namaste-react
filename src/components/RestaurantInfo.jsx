@@ -1,17 +1,18 @@
 import { useParams } from "react-router-dom";
-import Shimmmering from "./Shimmering";
-import { HiChevronDown, HiStar } from "react-icons/hi2";
+import Shimmering from "./Shimmering";
+import { HiChevronDown, HiStar } from "react-icons/hi";
 import MenuItems from "./MenuItems";
 import useRestInfo from "../utils/useRestInfo";
 import { useState } from "react";
+import Categories from "./Categories";
 
 const RestaurantInfo = () => {
   const { restId } = useParams();
-  // const [downBarStatus,setDownBarStatus] = useState(false);
   const [openCategory, setOpenCategory] = useState(null);
 
   const restInfo = useRestInfo(restId);
-  if (restInfo === null) return <Shimmmering />;
+  if (restInfo === null) return <Shimmering />;
+
   const {
     name,
     cuisines,
@@ -19,13 +20,14 @@ const RestaurantInfo = () => {
     avgRatingString,
     totalRatingsString,
   } = restInfo?.cards[0]?.card?.card?.info;
+
   const { deliveryTime } = restInfo?.cards[0]?.card?.card?.info?.sla;
-  const { cards } = restInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR;
-  const objectsExceptFirst = cards.slice(1);
+  const cards = restInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
 
   const handleMenuCard = (title) => {
-    setOpenCategory(title === openCategory ? null : title);
+    setOpenCategory((prevTitle) => (prevTitle === title ? null : title));
   };
+
   return (
     <div className="flex mt-32 flex-col items-center">
       <div className="flex flex-col">
@@ -42,33 +44,45 @@ const RestaurantInfo = () => {
         </div>
       </div>
       <div className="">
-        {objectsExceptFirst.map((menu, index) => {
-          if (menu.card.card.title != undefined) {
+        {cards?.slice(1)?.map((menu, index) => {
+          const categories = menu?.card?.card?.categories;
+          const menuCardTitle = menu.card.card.title;
+          const itemCards = menu.card.card.itemCards;
+          if (itemCards) {
             return (
               <div key={index} className="w-[800px] ">
                 <div className="flex justify-between p-4 ">
                   <p className="text-lg font-semibold">
-                    {menu.card.card.title} (
-                    {menu.card.card.itemCards?.length
-                      ? menu.card.card.itemCards?.length
-                      : 0}
-                    )
+                    {itemCards &&
+                      `${menu.card.card.title} (${menu.card.card.itemCards.length})`}
                   </p>
-                  <button
-                    className=" ml-2"
-                    onClick={() => {
-                      handleMenuCard(menu.card.card.title);
-                    }}
-                  >
-                    <HiChevronDown />
-                  </button>
+                  {itemCards && (
+                    <button
+                      className=" ml-2"
+                      onClick={() => {
+                        handleMenuCard(menuCardTitle);
+                      }}
+                    >
+                      <HiChevronDown />
+                    </button>
+                  )}
                 </div>
-                {openCategory === menu.card.card.title && (
+                {openCategory === menuCardTitle && (
                   <div className="p-6">
-                    <MenuItems items={menu.card.card.itemCards} />
+                    {itemCards && <MenuItems items={itemCards} />}
                   </div>
                 )}
               </div>
+            );
+          } else if (categories) {
+            return (
+              <>
+                <Categories
+                  categories={categories}
+                  openCategory={openCategory}
+                  handleMenuCard={handleMenuCard}
+                />
+              </>
             );
           }
         })}
@@ -76,4 +90,5 @@ const RestaurantInfo = () => {
     </div>
   );
 };
+
 export default RestaurantInfo;

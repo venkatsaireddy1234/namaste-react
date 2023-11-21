@@ -1,6 +1,7 @@
 import React from "react";
 
 function MenuItems({ items }) {
+  console.log(items);
   return (
     <div className="">
       {items?.map((item) => (
@@ -22,6 +23,9 @@ function MenuItems({ items }) {
             </div>
           </div>
           <div className="">
+            <div className="absolute">
+              <button className="bg-white p-2 my-30 mx-30 text-green-400 rounded-lg">Add </button>
+            </div>
             <img
               className=" h-32 w-32 object-cover rounded-lg"
               src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${item.card.info.imageId}`}
