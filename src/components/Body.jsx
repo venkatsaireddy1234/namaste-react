@@ -11,7 +11,6 @@ export default Body = () => {
   const [inputValue, setValue] = useState("");
   const [filteredRest, setFilters] = useState([]);
 
-  console.log(resList);
   const RestuarantCardWithLable = withPromotedLabel(Restocard);
   useEffect(() => {
     fetchData();
